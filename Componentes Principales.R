@@ -93,6 +93,7 @@ FROM [CHEC].[dbo].[Fact_ordenes_trabajo_GIIP]')
   
   train = Fact_ordenes_trabajo_GIIP[-trainIndex, ]
   
+summary(train)
   #select: seleccionar un subconjunto
   
   DB1 <- dplyr::select(train, c(HORA_DESPLAZAMIENTO, HORA_LLEGADA, 
@@ -135,7 +136,7 @@ FROM [CHEC].[dbo].[Fact_ordenes_trabajo_GIIP]')
   DB10 <- cbind(DB1, MES, DIF1, DIF2, DIF3, DIF4)
   
   DB10 <-filter(DB10, DB10$DIF4 >0, DB10$DIF4 <600, DB10$DIF1>0, DB10$DIF2 >0, DB10$DIF3 >0)
-  
+     
   DB11 <- dplyr::select(DB10, -c(HORA_DESPLAZAMIENTO, HORA_LLEGADA, 
                                  FIN_EJECUCION, HORA_ENERGIZACION))
   
